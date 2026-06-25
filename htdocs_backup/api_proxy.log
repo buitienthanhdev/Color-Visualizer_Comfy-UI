@@ -1,0 +1,275 @@
+[2026-06-10 05:44:23] Proxying: GET http://localhost:8188/history_load
+[2026-06-10 05:44:23] Response code: 404
+[2026-06-10 05:44:32] Proxying: POST http://localhost:8188/upload/image
+[2026-06-10 05:44:32] Uploading file: 56f8ada910175b475100e43c2000823e.jpg
+[2026-06-10 05:44:33] Response code: 500
+[2026-06-10 05:46:27] Proxying: GET http://localhost:8188/history_load
+[2026-06-10 05:46:28] Response code: 404 | Response: 
+[2026-06-10 05:46:39] Proxying: POST http://localhost:8188/upload/image
+[2026-06-10 05:46:39] Uploading file: 56f8ada910175b475100e43c2000823e.jpg
+[2026-06-10 05:46:39] Response code: 500 | Response: 500 Internal Server Error
+
+Server got itself in trouble
+[2026-06-10 05:47:34] Proxying: GET http://localhost:8188/history_load
+[2026-06-10 05:47:34] Response code: 404 | Response: 
+[2026-06-10 05:47:42] Proxying: POST http://localhost:8188/upload/image
+[2026-06-10 05:47:42] Uploading file: 6a040d5e4b5c50dfb2c25510cf9d8652.jpg
+[2026-06-10 05:47:42] Response code: 500 | Response: 500 Internal Server Error
+
+Server got itself in trouble
+[2026-06-10 05:49:38] Proxying: GET http://localhost:8188/history_load
+[2026-06-10 05:49:38] Response code: 404 | Response: 
+[2026-06-10 05:50:07] Proxying: GET http://localhost:8188/history_load
+[2026-06-10 05:50:08] Response code: 404 | Response: 
+[2026-06-10 05:50:21] Proxying: POST http://localhost:8188/upload/image
+[2026-06-10 05:50:21] Forwarding raw body: 0 bytes
+[2026-06-10 05:50:21] Response code: 500 | Response: 500 Internal Server Error
+
+Server got itself in trouble
+[2026-06-10 05:56:47] Proxying: GET http://localhost:8188/history_load
+[2026-06-10 05:56:48] Response code: 404 | Response: 
+[2026-06-10 05:56:56] Proxying: POST http://localhost:8188/upload/image
+[2026-06-10 05:56:56] Forwarding raw body: 0 bytes
+[2026-06-10 05:56:56] Response code: 500 | Response: 500 Internal Server Error
+
+Server got itself in trouble
+[2026-06-10 05:58:11] Proxying: GET http://localhost:8188/history_load
+[2026-06-10 05:58:11] Response code: 404 | 
+[2026-06-10 05:58:23] Proxying: POST http://localhost:8188/upload/image
+[2026-06-10 05:58:23] Forwarding multipart: 1 file(s), 1 field(s)
+[2026-06-10 05:58:24] Response code: 200 (OK)
+[2026-06-10 05:58:24] Proxying: POST http://localhost:8188/prompt
+[2026-06-10 05:58:24] Forwarding raw body: 10986 bytes
+[2026-06-10 05:58:24] Response code: 200 (OK)
+[2026-06-10 05:58:26] Proxying: GET http://localhost:8188/history/8e92da36-3b62-4573-8646-0502abd44bd2
+[2026-06-10 05:58:26] Response code: 200 (OK)
+[2026-06-10 05:58:28] Proxying: GET http://localhost:8188/history/8e92da36-3b62-4573-8646-0502abd44bd2
+[2026-06-10 05:58:28] Response code: 200 (OK)
+[2026-06-10 05:58:31] Proxying: GET http://localhost:8188/history/8e92da36-3b62-4573-8646-0502abd44bd2
+[2026-06-10 05:58:31] Response code: 200 (OK)
+[2026-06-10 05:58:32] Proxying: GET http://localhost:8188/history/8e92da36-3b62-4573-8646-0502abd44bd2
+[2026-06-10 05:58:32] Response code: 200 (OK)
+[2026-06-10 05:58:34] Proxying: GET http://localhost:8188/history/8e92da36-3b62-4573-8646-0502abd44bd2
+[2026-06-10 05:58:34] Response code: 200 (OK)
+[2026-06-10 05:58:36] Proxying: GET http://localhost:8188/history/8e92da36-3b62-4573-8646-0502abd44bd2
+[2026-06-10 05:58:36] Response code: 200 (OK)
+[2026-06-10 05:58:39] Proxying: GET http://localhost:8188/history/8e92da36-3b62-4573-8646-0502abd44bd2
+[2026-06-10 05:58:39] Response code: 200 (OK)
+[2026-06-10 05:58:40] Proxying: GET http://localhost:8188/history/8e92da36-3b62-4573-8646-0502abd44bd2
+[2026-06-10 05:58:40] Response code: 200 (OK)
+[2026-06-10 05:58:43] Proxying: GET http://localhost:8188/history/8e92da36-3b62-4573-8646-0502abd44bd2
+[2026-06-10 05:58:43] Response code: 200 (OK)
+[2026-06-10 05:58:43] Proxying: GET http://localhost:8188/view?filename=ComfyUI_00317_.png&subfolder=&type=output
+[2026-06-10 05:58:43] Proxying: POST http://localhost:8188/history_save
+[2026-06-10 05:58:43] Forwarding raw body: 363666 bytes
+[2026-06-10 05:58:43] Proxying: GET http://localhost:8188/view?filename=ComfyUI_00318_.png&subfolder=&type=output
+[2026-06-10 05:58:43] Response code: 405 | 405: Method Not Allowed
+[2026-06-10 05:58:43] Response code: 200 (OK)
+[2026-06-10 05:58:43] Proxying: GET http://localhost:8188/view?filename=ComfyUI_00317_.png&subfolder=&type=output
+[2026-06-10 05:58:43] Proxying: GET http://localhost:8188/view?filename=ComfyUI_00318_.png&subfolder=&type=output
+[2026-06-10 05:58:43] Proxying: POST http://localhost:8188/save_composite
+[2026-06-10 05:58:43] Forwarding raw body: 735358 bytes
+[2026-06-10 05:58:44] Response code: 200 (OK)
+[2026-06-10 05:58:44] Response code: 405 | 405: Method Not Allowed
+[2026-06-10 06:01:12] Proxying: GET http://localhost:8188/history_load
+[2026-06-10 06:01:12] Response code: 404 | 
+[2026-06-10 06:42:04] Proxying: GET http://localhost:8188/history_load
+[2026-06-10 06:42:04] Response code: 404 | 
+[2026-06-10 06:51:06] Proxying: GET http://localhost:8188/history_load
+[2026-06-10 06:51:06] Response code: 404 | 
+[2026-06-10 06:51:09] Proxying: GET http://localhost:8188/history_load
+[2026-06-10 06:51:09] Proxying: GET http://localhost:8188/history_load
+[2026-06-10 06:51:09] Response code: 404 | 
+[2026-06-10 06:51:09] Proxying: GET http://localhost:8188/history_load
+[2026-06-10 06:51:09] Response code: 404 | 
+[2026-06-10 06:51:09] Response code: 404 | 
+[2026-06-10 06:51:18] Proxying: GET http://localhost:8188/history_load
+[2026-06-10 06:51:18] Response code: 404 | 
+[2026-06-10 06:51:18] Proxying: GET http://localhost:8188/history_load
+[2026-06-10 06:51:19] Response code: 404 | 
+[2026-06-10 06:51:21] Proxying: GET http://localhost:8188/history_load
+[2026-06-10 06:51:22] Response code: 404 | 
+[2026-06-10 06:51:29] Proxying: POST http://localhost:8188/upload/image
+[2026-06-10 06:51:29] Forwarding multipart: 1 file(s), 1 field(s)
+[2026-06-10 06:51:29] Response code: 200 (OK)
+[2026-06-10 06:51:29] Proxying: POST http://localhost:8188/prompt
+[2026-06-10 06:51:29] Forwarding raw body: 10952 bytes
+[2026-06-10 06:51:29] Response code: 403 | 
+[2026-06-10 06:51:31] Proxying: GET http://localhost:8188/history_load
+[2026-06-10 06:51:32] Response code: 404 | 
+[2026-06-10 06:52:58] Proxying: POST http://localhost:8188/upload/image
+[2026-06-10 06:52:58] Forwarding multipart: 1 file(s), 1 field(s)
+[2026-06-10 06:52:58] Response code: 200 (OK)
+[2026-06-10 06:53:00] Proxying: GET http://localhost:8188/history_load
+[2026-06-10 06:53:00] Response code: 404 | 
+[2026-06-10 06:53:00] Proxying: POST http://localhost:8188/prompt
+[2026-06-10 06:53:00] Forwarding raw body: 10952 bytes
+[2026-06-10 06:53:00] Response code: 403 | 
+[2026-06-10 06:53:13] Proxying: GET http://localhost:8188/prompt
+[2026-06-10 06:53:13] Response code: 200 (OK)
+[2026-06-10 06:53:22] Proxying: GET http://localhost:8188/prompt
+[2026-06-10 06:53:22] Response code: 200 (OK)
+[2026-06-10 06:53:46] Proxying: GET http://localhost:8188/history_load
+[2026-06-10 06:53:46] Response code: 404 | 
+[2026-06-10 06:53:55] Proxying: POST http://localhost:8188/upload/image
+[2026-06-10 06:53:55] Forwarding multipart: 1 file(s), 1 field(s)
+[2026-06-10 06:53:55] Response code: 200 (OK)
+[2026-06-10 06:53:55] Proxying: POST http://localhost:8188/prompt
+[2026-06-10 06:53:55] Forwarding raw body: 10948 bytes
+[2026-06-10 06:53:56] Response code: 403 | 
+[2026-06-10 07:01:29] Proxying: GET http://localhost:8188/history_load
+[2026-06-10 07:01:29] Response code: 404 | 
+[2026-06-10 07:02:08] Proxying: GET http://localhost:8188/history_load
+[2026-06-10 07:02:08] Response code: 404 | 
+[2026-06-10 07:02:32] Proxying: GET http://localhost:8188/history_load
+[2026-06-10 07:02:32] Response code: 404 | 
+[2026-06-10 07:02:33] Proxying: GET http://localhost:8188/history_load
+[2026-06-10 07:02:33] Response code: 404 | 
+[2026-06-10 08:12:26] Proxying: GET http://localhost:8188/history_load
+[2026-06-10 08:12:26] Response code: 404 | 
+[2026-06-10 08:17:04] Proxying: GET http://localhost:8188/history_load
+[2026-06-10 08:17:05] Response code: 404 | 
+[2026-06-10 08:22:30] Proxying: GET http://localhost:8188/history_load
+[2026-06-10 08:22:30] Response code: 404 | 
+[2026-06-10 08:23:04] Proxying: POST http://localhost:8188/history_save
+[2026-06-10 08:23:04] Forwarding raw body: 121035 bytes
+[2026-06-10 08:23:04] Response code: 405 | 405: Method Not Allowed
+[2026-06-10 08:23:06] Proxying: POST http://localhost:8188/save_composite
+[2026-06-10 08:23:06] Forwarding raw body: 1174649 bytes
+[2026-06-10 08:23:06] Response code: 405 | 405: Method Not Allowed
+[2026-06-10 08:23:08] Proxying: GET http://localhost:8188/history_load
+[2026-06-10 08:23:08] Response code: 404 | 
+[2026-06-10 08:23:33] Proxying: POST http://localhost:8188/history_save
+[2026-06-10 08:23:33] Forwarding raw body: 69586 bytes
+[2026-06-10 08:23:33] Response code: 405 | 405: Method Not Allowed
+[2026-06-10 08:23:33] Proxying: POST http://localhost:8188/save_composite
+[2026-06-10 08:23:33] Forwarding raw body: 367732 bytes
+[2026-06-10 08:23:34] Response code: 405 | 405: Method Not Allowed
+[2026-06-10 08:26:06] Proxying: GET http://localhost:8188/history_load
+[2026-06-10 08:26:07] Response code: 404 | 
+[2026-06-10 08:26:33] Proxying: GET http://localhost:8188/history_load
+[2026-06-10 08:26:33] Response code: 404 | 
+[2026-06-10 08:27:18] Proxying: POST http://localhost:8188/history_save
+[2026-06-10 08:27:18] Forwarding raw body: 196121 bytes
+[2026-06-10 08:27:18] Response code: 405 | 405: Method Not Allowed
+[2026-06-10 08:27:18] Proxying: POST http://localhost:8188/save_composite
+[2026-06-10 08:27:18] Forwarding raw body: 483714 bytes
+[2026-06-10 08:27:18] Response code: 405 | 405: Method Not Allowed
+[2026-06-10 08:27:55] Proxying: GET http://localhost:8188/history_load
+[2026-06-10 08:27:55] Response code: 404 | 
+[2026-06-10 08:28:24] Proxying: POST http://localhost:8188/history_save
+[2026-06-10 08:28:24] Forwarding raw body: 237888 bytes
+[2026-06-10 08:28:24] Response code: 405 | 405: Method Not Allowed
+[2026-06-10 08:28:25] Proxying: POST http://localhost:8188/save_composite
+[2026-06-10 08:28:25] Forwarding raw body: 786994 bytes
+[2026-06-10 08:28:25] Response code: 405 | 405: Method Not Allowed
+[2026-06-10 08:29:53] Proxying: GET http://localhost:8188/history_load
+[2026-06-10 08:29:53] Response code: 404 | 
+[2026-06-10 08:31:22] Proxying: POST http://localhost:8188/history_save
+[2026-06-10 08:31:22] Forwarding raw body: 244931 bytes
+[2026-06-10 08:31:22] Response code: 405 | 405: Method Not Allowed
+[2026-06-10 08:31:23] Proxying: POST http://localhost:8188/save_composite
+[2026-06-10 08:31:23] Forwarding raw body: 419538 bytes
+[2026-06-10 08:31:23] Response code: 405 | 405: Method Not Allowed
+[2026-06-10 08:31:41] Proxying: GET http://localhost:8188/history_load
+[2026-06-10 08:31:41] Response code: 404 | 
+[2026-06-10 08:32:09] Proxying: POST http://localhost:8188/history_save
+[2026-06-10 08:32:09] Forwarding raw body: 394721 bytes
+[2026-06-10 08:32:10] Response code: 405 | 405: Method Not Allowed
+[2026-06-10 08:32:11] Proxying: POST http://localhost:8188/save_composite
+[2026-06-10 08:32:11] Forwarding raw body: 681426 bytes
+[2026-06-10 08:32:11] Response code: 405 | 405: Method Not Allowed
+[2026-06-10 08:33:19] Proxying: GET http://localhost:8188/history_load
+[2026-06-10 08:33:19] Response code: 404 | 
+[2026-06-10 08:33:42] Proxying: POST http://localhost:8188/history_save
+[2026-06-10 08:33:42] Forwarding raw body: 394718 bytes
+[2026-06-10 08:33:42] Response code: 405 | 405: Method Not Allowed
+[2026-06-10 08:33:42] Proxying: POST http://localhost:8188/save_composite
+[2026-06-10 08:33:42] Forwarding raw body: 665458 bytes
+[2026-06-10 08:33:42] Response code: 405 | 405: Method Not Allowed
+[2026-06-10 08:34:17] Proxying: GET http://localhost:8188/history_load
+[2026-06-10 08:34:17] Response code: 404 | 
+[2026-06-10 08:34:43] Proxying: POST http://localhost:8188/history_save
+[2026-06-10 08:34:43] Forwarding raw body: 249099 bytes
+[2026-06-10 08:34:43] Response code: 405 | 405: Method Not Allowed
+[2026-06-10 08:34:53] Proxying: POST http://localhost:8188/save_composite
+[2026-06-10 08:34:53] Forwarding raw body: 589010 bytes
+[2026-06-10 08:34:54] Response code: 405 | 405: Method Not Allowed
+[2026-06-10 08:37:25] Proxying: GET http://localhost:8188/history_load
+[2026-06-10 08:37:26] Response code: 404 | 
+[2026-06-10 08:38:00] Proxying: POST http://localhost:8188/history_save
+[2026-06-10 08:38:00] Forwarding raw body: 249091 bytes
+[2026-06-10 08:38:00] Response code: 405 | 405: Method Not Allowed
+[2026-06-10 08:38:00] Proxying: POST http://localhost:8188/save_composite
+[2026-06-10 08:38:00] Forwarding raw body: 514570 bytes
+[2026-06-10 08:38:00] Response code: 405 | 405: Method Not Allowed
+[2026-06-10 08:38:31] Proxying: GET http://localhost:8188/history_load
+[2026-06-10 08:38:31] Response code: 404 | 
+[2026-06-10 08:38:56] Proxying: POST http://localhost:8188/history_save
+[2026-06-10 08:38:56] Forwarding raw body: 332266 bytes
+[2026-06-10 08:38:56] Response code: 405 | 405: Method Not Allowed
+[2026-06-10 08:38:57] Proxying: POST http://localhost:8188/save_composite
+[2026-06-10 08:38:57] Forwarding raw body: 661842 bytes
+[2026-06-10 08:38:57] Response code: 405 | 405: Method Not Allowed
+[2026-06-10 08:40:09] Proxying: GET http://localhost:8188/history_load
+[2026-06-10 08:40:09] Response code: 404 | 
+[2026-06-10 08:40:15] Proxying: GET http://localhost:8188/history_load
+[2026-06-10 08:40:15] Response code: 404 | 
+[2026-06-10 08:40:26] Proxying: GET http://localhost:8188/history_load
+[2026-06-10 08:40:26] Response code: 404 | 
+[2026-06-10 08:40:48] Proxying: GET http://localhost:8188/history_load
+[2026-06-10 08:40:48] Response code: 404 | 
+[2026-06-10 08:41:10] Proxying: POST http://localhost:8188/save_composite
+[2026-06-10 08:41:10] Forwarding raw body: 506909 bytes
+[2026-06-10 08:41:10] Response code: 405 | 405: Method Not Allowed
+[2026-06-10 08:41:11] Proxying: POST http://localhost:8188/history_save
+[2026-06-10 08:41:11] Forwarding raw body: 7475414 bytes
+[2026-06-10 08:41:11] Response code: 405 | 405: Method Not Allowed
+[2026-06-10 08:41:21] Proxying: POST http://localhost:8188/history_save
+[2026-06-10 08:41:21] Forwarding raw body: 21729 bytes
+[2026-06-10 08:41:21] Response code: 405 | 405: Method Not Allowed
+[2026-06-10 08:41:22] Proxying: POST http://localhost:8188/save_composite
+[2026-06-10 08:41:22] Forwarding raw body: 1168766 bytes
+[2026-06-10 08:41:22] Response code: 405 | 405: Method Not Allowed
+[2026-06-10 08:41:49] Proxying: POST http://localhost:8188/save_composite
+[2026-06-10 08:41:49] Forwarding raw body: 1013335 bytes
+[2026-06-10 08:41:49] Response code: 405 | 405: Method Not Allowed
+[2026-06-10 08:41:49] Proxying: POST http://localhost:8188/history_save
+[2026-06-10 08:41:49] Forwarding raw body: 5150799 bytes
+[2026-06-10 08:41:49] Response code: 405 | 405: Method Not Allowed
+[2026-06-10 08:42:48] Proxying: GET http://localhost:8188/history_load
+[2026-06-10 08:42:48] Proxying: GET http://localhost:8188/history_load
+[2026-06-10 08:42:48] Response code: 404 | 
+[2026-06-10 08:42:48] Proxying: GET http://localhost:8188/history_load
+[2026-06-10 08:42:48] Response code: 404 | 
+[2026-06-10 08:42:48] Response code: 404 | 
+[2026-06-10 08:43:05] Proxying: POST http://localhost:8188/save_composite
+[2026-06-10 08:43:05] Forwarding raw body: 1317403 bytes
+[2026-06-10 08:43:06] Response code: 405 | 405: Method Not Allowed
+[2026-06-10 08:43:07] Proxying: POST http://localhost:8188/history_save
+[2026-06-10 08:43:07] Forwarding raw body: 17490477 bytes
+[2026-06-10 08:43:07] Response code: 405 | 405: Method Not Allowed
+[2026-06-10 08:43:13] Proxying: POST http://localhost:8188/history_save
+[2026-06-10 08:43:13] Forwarding raw body: 126014 bytes
+[2026-06-10 08:43:13] Response code: 405 | 405: Method Not Allowed
+[2026-06-10 08:43:14] Proxying: POST http://localhost:8188/save_composite
+[2026-06-10 08:43:14] Forwarding raw body: 986763 bytes
+[2026-06-10 08:43:14] Response code: 405 | 405: Method Not Allowed
+[2026-06-10 08:44:37] Proxying: GET http://localhost:8188/history_load
+[2026-06-10 08:44:37] Response code: 404 | 
+[2026-06-10 08:45:03] Proxying: POST http://localhost:8188/history_save
+[2026-06-10 08:45:03] Forwarding raw body: 121041 bytes
+[2026-06-10 08:45:03] Response code: 405 | 405: Method Not Allowed
+[2026-06-10 08:45:25] Proxying: POST http://localhost:8188/save_composite
+[2026-06-10 08:45:25] Forwarding raw body: 1183457 bytes
+[2026-06-10 08:45:25] Response code: 405 | 405: Method Not Allowed
+[2026-06-10 08:49:19] Proxying: GET http://localhost:8188/history_load
+[2026-06-10 08:49:19] Response code: 404 | 
+[2026-06-10 08:49:44] Proxying: POST http://localhost:8188/history_save
+[2026-06-10 08:49:44] Forwarding raw body: 121035 bytes
+[2026-06-10 08:49:44] Response code: 405 | 405: Method Not Allowed
+[2026-06-10 08:49:44] Proxying: POST http://localhost:8188/save_composite
+[2026-06-10 08:49:44] Forwarding raw body: 1187005 bytes
+[2026-06-10 08:49:45] Response code: 405 | 405: Method Not Allowed
+[2026-06-10 08:53:30] Proxying: GET http://localhost:8188/history_load
+[2026-06-10 08:53:30] Response code: 404 | 
