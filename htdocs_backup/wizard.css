@@ -1,0 +1,733 @@
+/* ══════════════════════════════════════════════════════════════════
+   WIZARD UI — Paint & More Color Selection Flow
+   ══════════════════════════════════════════════════════════════════ */
+
+/* ── Progress Bar ─────────────────────────────────────────────── */
+.wz-progress {
+  display: flex;
+  align-items: center;
+  padding: 14px 20px 12px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--surface3);
+  gap: 0;
+  flex-shrink: 0;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.wz-step-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  flex: 1;
+  position: relative;
+  cursor: default;
+}
+
+.wz-step-bubble {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid var(--surface3);
+  background: var(--surface2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--text3);
+  transition: all 0.25s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.wz-step-label {
+  font-size: 9px;
+  font-weight: 600;
+  color: var(--text3);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  transition: color 0.25s ease;
+}
+
+.wz-step-connector {
+  flex: 1;
+  height: 2px;
+  background: var(--surface3);
+  margin-bottom: 18px;
+  transition: background 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.wz-step-connector.done {
+  background: var(--accent);
+}
+
+/* Active step */
+.wz-step-item.active .wz-step-bubble {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 0 0 4px var(--accent-glow);
+}
+.wz-step-item.active .wz-step-label {
+  color: var(--accent);
+}
+
+/* Done step */
+.wz-step-item.done .wz-step-bubble {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #fff;
+}
+.wz-step-item.done .wz-step-label {
+  color: var(--accent);
+}
+
+/* ── Panel Container ──────────────────────────────────────────── */
+.wz-panel {
+  display: none;
+  flex-direction: column;
+  gap: 18px;
+  padding: 20px 20px 24px;
+  animation: wzFadeIn 0.22s ease;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.wz-panel.active {
+  display: flex;
+}
+
+@keyframes wzFadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.wz-panel-title {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text3);
+}
+
+/* ── Wizard Navigation Buttons ────────────────────────────────── */
+.wz-nav {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: 4px;
+}
+
+.wz-btn-back {
+  padding: 8px 16px;
+  border-radius: var(--r-md);
+  border: 1.5px solid var(--surface3);
+  background: var(--surface);
+  color: var(--text2);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: var(--font-sans);
+}
+.wz-btn-back:hover { background: var(--surface2); }
+
+.wz-btn-next {
+  flex: 1;
+  padding: 10px 20px;
+  border-radius: var(--r-md);
+  border: none;
+  background: var(--accent);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: var(--font-sans);
+  letter-spacing: 0.02em;
+}
+.wz-btn-next:hover:not(:disabled) { background: var(--accent2); }
+.wz-btn-next:disabled {
+  background: var(--surface3);
+  color: var(--text3);
+  cursor: not-allowed;
+}
+
+/* ── STEP 1: Upload ───────────────────────────────────────────── */
+#wzUploadZone {
+  border: 2px dashed var(--surface3);
+  border-radius: var(--r-lg);
+  padding: 32px 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: var(--surface2);
+}
+#wzUploadZone:hover,
+#wzUploadZone.drag-over {
+  border-color: var(--accent);
+  background: var(--accent-lt);
+}
+#wzUploadZone .wz-upload-icon {
+  font-size: 28px;
+  margin-bottom: 10px;
+  display: block;
+}
+#wzUploadZone p {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+#wzUploadZone small {
+  font-size: 10px;
+  color: var(--text3);
+}
+
+.wz-preview-box {
+  position: relative;
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  background: var(--surface3);
+  display: none;
+}
+.wz-preview-box img {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+  display: block;
+}
+.wz-preview-box .wz-remove-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(10,20,15,0.7);
+  border: none;
+  color: #fff;
+  font-size: 13px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s;
+}
+.wz-preview-box .wz-remove-btn:hover { background: rgba(198,40,40,0.9); }
+
+.wz-upload-hint {
+  font-size: 10px;
+  color: var(--text3);
+  text-align: center;
+}
+
+/* ── STEP 2: Project Type ─────────────────────────────────────── */
+.wz-type-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.wz-type-card {
+  border: 2px solid var(--surface3);
+  border-radius: var(--r-lg);
+  padding: 20px 14px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: var(--surface);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.wz-type-card:hover {
+  border-color: var(--accent);
+  background: var(--accent-lt);
+}
+
+.wz-type-card.selected {
+  border-color: var(--accent);
+  background: var(--accent-lt);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+.wz-type-card .wz-type-icon {
+  font-size: 32px;
+  line-height: 1;
+}
+
+.wz-type-card .wz-type-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: 0.02em;
+}
+
+.wz-type-card .wz-type-desc {
+  font-size: 10px;
+  color: var(--text3);
+  line-height: 1.5;
+}
+
+.wz-type-card.selected .wz-type-label {
+  color: var(--accent);
+}
+
+/* ── STEP 3: Color Preferences ────────────────────────────────── */
+.wz-pref-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.wz-pref-header {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.wz-pref-icon { font-size: 14px; }
+
+.wz-pref-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  min-height: 34px;
+  padding: 8px 10px;
+  border-radius: var(--r-md);
+  background: var(--surface2);
+  border: 1.5px solid var(--surface3);
+}
+
+.wz-color-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 8px 3px 4px;
+  border-radius: 20px;
+  background: var(--surface);
+  border: 1.5px solid var(--surface3);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text);
+  cursor: default;
+  transition: all 0.15s;
+}
+
+.wz-color-tag .wz-tag-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1px solid rgba(0,0,0,0.12);
+  flex-shrink: 0;
+}
+
+.wz-color-tag .wz-tag-remove {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: none;
+  background: var(--surface3);
+  color: var(--text2);
+  font-size: 9px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  line-height: 1;
+  margin-left: 2px;
+  transition: background 0.15s;
+}
+.wz-color-tag .wz-tag-remove:hover { background: var(--error); color: #fff; }
+
+.wz-pref-input-row {
+  display: flex;
+  gap: 7px;
+}
+
+.wz-pref-input {
+  flex: 1;
+  padding: 7px 12px;
+  border-radius: var(--r-md);
+  border: 1.5px solid var(--surface3);
+  background: var(--surface);
+  font-size: 12px;
+  color: var(--text);
+  font-family: var(--font-sans);
+  outline: none;
+  transition: border-color 0.15s;
+}
+.wz-pref-input:focus { border-color: var(--accent); }
+
+.wz-pref-add-btn {
+  padding: 7px 12px;
+  border-radius: var(--r-md);
+  border: 1.5px solid var(--surface3);
+  background: var(--surface);
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+.wz-pref-add-btn:hover { background: var(--accent-lt); border-color: var(--accent); }
+
+/* Quick preset swatches */
+.wz-pref-presets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.wz-preset-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 8px 3px 4px;
+  border-radius: 20px;
+  border: 1.5px solid var(--surface3);
+  background: var(--surface2);
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text2);
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+.wz-preset-chip:hover { border-color: var(--accent); background: var(--accent-lt); color: var(--accent); }
+.wz-preset-chip .wz-preset-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  border: 1px solid rgba(0,0,0,0.12);
+  flex-shrink: 0;
+}
+.wz-presets-label {
+  font-size: 10px;
+  color: var(--text3);
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+/* ── STEP 4: Palette Recommendation ──────────────────────────── */
+.wz-palette-loading {
+  text-align: center;
+  padding: 32px 20px;
+  color: var(--text3);
+  font-size: 12px;
+}
+
+.wz-palette-brand-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.wz-brand-label {
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text3);
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--surface3);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.wz-brand-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--surface3);
+}
+
+.wz-palette-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.palette-card {
+  border: 2px solid var(--surface3);
+  border-radius: var(--r-md);
+  padding: 12px;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  background: var(--surface);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.palette-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.palette-card.selected {
+  border-color: var(--accent);
+  background: var(--accent-lt);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+.palette-swatches {
+  display: flex;
+  gap: 4px;
+  height: 38px;
+  border-radius: var(--r-sm);
+  overflow: hidden;
+}
+
+.palette-swatch {
+  flex: 1;
+  border-radius: 4px;
+  transition: flex 0.2s ease;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,0.15), inset 0 0 0 1px rgba(255,255,255,0.08);
+}
+
+.palette-swatch.primary { flex: 2; }
+
+.palette-card:hover .palette-swatch.primary { flex: 2.5; }
+
+.palette-card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.palette-card-num {
+  font-size: 9px;
+  font-weight: 800;
+  color: var(--text3);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.palette-card-colors {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.palette-card-color-row {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10px;
+  color: var(--text2);
+}
+
+.palette-card-color-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: 1px solid rgba(0,0,0,0.1);
+  flex-shrink: 0;
+}
+
+.palette-card-color-role {
+  font-weight: 700;
+  min-width: 28px;
+  font-size: 9px;
+  text-transform: uppercase;
+  color: var(--text3);
+}
+
+.palette-card-color-name {
+  font-size: 10px;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 90px;
+}
+
+/* Selected indicator */
+.palette-card.selected .palette-card-num::before {
+  content: '✓  ';
+  color: var(--accent);
+}
+
+/* ── STEP 5: Apply & Run ──────────────────────────────────────── */
+.wz-selected-summary {
+  border: 1.5px solid var(--accent);
+  border-radius: var(--r-md);
+  padding: 12px 14px;
+  background: var(--surface2);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.wz-summary-swatches {
+  display: flex;
+  gap: 3px;
+  flex-shrink: 0;
+}
+
+.wz-summary-swatch {
+  width: 22px;
+  height: 40px;
+  border-radius: 5px;
+  border: 1.5px solid rgba(255,255,255,0.25);
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,0.18);
+}
+
+.wz-summary-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.wz-summary-brand {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+}
+
+.wz-summary-combo {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text);
+  margin-top: 1px;
+}
+
+.wz-summary-change {
+  font-size: 10px;
+  color: var(--text3);
+  cursor: pointer;
+  text-decoration: underline;
+  margin-top: 3px;
+  display: inline-block;
+}
+.wz-summary-change:hover { color: var(--accent); }
+
+/* Step 5 color zone section lives inside wizard — expose colorTargets */
+#wzPanel5 .section {
+  display: block;
+}
+
+#wzPanel5 #colorTargets {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  width: 100%;
+}
+
+#wzPanel5 .color-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 8px;
+  margin-bottom: 6px;
+  padding: 7px 10px;
+  width: 100%;
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+#wzPanel5 .color-name {
+  font-size: 11px;
+  flex: 1.2;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+#wzPanel5 .color-val {
+  font-size: 11px;
+  flex: 1;
+  min-width: 0;
+  max-width: 110px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  border-left: none;
+}
+
+#wzPanel5 .mat-toggle-btn {
+  display: none;
+}
+
+#wzPanel5 .section-title {
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text3);
+  margin-bottom: 10px;
+}
+
+/* Run button inside wizard panel */
+.wz-run-btn {
+  width: 100%;
+  padding: 13px 20px;
+  border-radius: var(--r-md);
+  border: none;
+  background: linear-gradient(135deg, var(--accent) 0%, #1A8A62 100%);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(10,92,67,0.25);
+}
+.wz-run-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, var(--accent2) 0%, var(--accent) 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(10,92,67,0.32);
+}
+.wz-run-btn:disabled {
+  background: var(--surface3);
+  color: var(--text3);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* ── Overrides for panel-left in wizard mode ──────────────────── */
+.panel-left.wizard-mode {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 0;
+}
+
+.panel-left.wizard-mode > .wz-body {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Responsive tweaks ────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .wz-step-label { display: none; }
+  .wz-palette-grid { grid-template-columns: 1fr; }
+}

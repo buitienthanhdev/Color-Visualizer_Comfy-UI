@@ -1,0 +1,657 @@
+{
+  "60": {
+    "inputs": {
+      "filename_prefix": "ComfyUI",
+      "images": [
+        "433:8",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  },
+  "78": {
+    "inputs": {
+      "image": "9a684aeba6250e91860a90a5e11d6f03.jpg"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "435": {
+    "inputs": {
+      "value": "[TASK: Architectural Color Modification - Daylight]\n\n[CRITICAL FACADE LOCK]: ABSOLUTELY DO NOT generate, invent, add, or draw any new structural elements, borders, panels, lines, frames, or moldings on the walls. Only recolor surfaces that ALREADY exist in the input image. If an element is not present in the original image, do not create it.\n\n\n\n[ENVIRONMENTAL RENDERING]:\n- Sky: Clear light blue or transparent blue sky with high overall ambient brightness. Optional thin, wispy clouds allowed.\n- Building & Materials: Paint color must be rendered with true real-world accuracy. Preserve the clear visibility of original wall textures, roughness, and material details (stone, brick, aluminum, glass).\n- Shadows: Sharp, clean, and high-contrast natural shadows cast strictly according to a distinct sun direction.\n- Landscape & Glass: Vegetation must be vibrant fresh green, reflecting natural sunlight. Parked vehicles must have headlights completely OFF. Glass windows must distinctly reflect the blue sky and environment.\n\n[OUTPUT]: Perfect color visualization to evaluate true paint tone, color mixing ratios, and contrast without altering geometry."
+    },
+    "class_type": "PrimitiveStringMultiline",
+    "_meta": {
+      "title": "Prompt"
+    }
+  },
+  "711": {
+    "inputs": {
+      "value": "[TASK: Architectural Color Modification - Nighttime]\n\n[CRITICAL FACADE LOCK]: ABSOLUTELY DO NOT generate, invent, add, or draw any new structural elements, borders, panels, lines, frames, or moldings. Only recolor surfaces that ALREADY exist in the input image.\n\n[COLOR SPECIFICATIONS]:\n- Maintain identical physical paint colors from the daytime version (walls: red, frames: black). Only lighting conditions change.\n\n[DAYLIGHT SUPPRESSION]: Completely suppress, erase, and block all daylight, sunlight, or bright sky bleeding from the input image. Any bright windows or open sky areas from the original image must be forced into midnight conditions.\n\n[NIGHTTIME ENVIRONMENTAL RENDERING]:\n- Sky: Deep indigo or dark navy blue sky. Must NOT be pitch black. Feature a subtle lighting gradient or soft haze near the horizon line.\n- Chiaroscuro Illumination: The entire scene is cast in heavy, dark, pitch-black shadows. The building's massing and forms are defined purely by localized artificial light sources, not sunlight.\n- Active Lighting System: Interior rooms emit a warm golden-yellow light (2700K–3200K) through the windows, creating a realistic light spill and outward glow. Balconies feature soft, low-intensity ambient lighting. The ground floor lobby/entrance must be visibly brighter than the upper floors.\n- Light-Driven Visibility: Wall surfaces and architectural details are visible ONLY where the light from the fixtures directly strikes them. Any area untouched by artificial lighting must recede completely into darkness and become invisible.\n- Landscape & Glass: Foliage appears dark, catching light only directly adjacent to the building's lamps. Parked vehicles have headlights off with subtle paint reflections. Glass windows are highly transparent, showing warm interior details with minimal external environment reflections.\n\n[OUTPUT STYLE]: Ultra-photorealistic architectural night photography with a natural dynamic range and warm cinematic ambience."
+    },
+    "class_type": "PrimitiveStringMultiline",
+    "_meta": {
+      "title": "Prompt"
+    }
+  },
+  "712": {
+    "inputs": {
+      "filename_prefix": "ComfyUI",
+      "images": [
+        "734:721",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  },
+  "433:75": {
+    "inputs": {
+      "strength": 1,
+      "pre_cfg": false,
+      "model": [
+        "433:66",
+        0
+      ]
+    },
+    "class_type": "CFGNorm",
+    "_meta": {
+      "title": "CFGNorm"
+    }
+  },
+  "433:39": {
+    "inputs": {
+      "vae_name": "qwen_image_vae.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "Load VAE"
+    }
+  },
+  "433:38": {
+    "inputs": {
+      "clip_name": "qwen_2.5_vl_7b_fp8_scaled.safetensors",
+      "type": "qwen_image",
+      "device": "default"
+    },
+    "class_type": "CLIPLoader",
+    "_meta": {
+      "title": "Load CLIP"
+    }
+  },
+  "433:37": {
+    "inputs": {
+      "unet_name": "Qwen-Image-Edit-2511-FP8_e4m3fn.safetensors",
+      "weight_dtype": "default"
+    },
+    "class_type": "UNETLoader",
+    "_meta": {
+      "title": "Load Diffusion Model"
+    }
+  },
+  "433:110": {
+    "inputs": {
+      "prompt": "",
+      "clip": [
+        "433:38",
+        0
+      ],
+      "vae": [
+        "433:39",
+        0
+      ],
+      "image1": [
+        "433:117",
+        0
+      ]
+    },
+    "class_type": "TextEncodeQwenImageEditPlus",
+    "_meta": {
+      "title": "TextEncodeQwenImageEditPlus"
+    }
+  },
+  "433:66": {
+    "inputs": {
+      "shift": 3,
+      "model": [
+        "433:440",
+        0
+      ]
+    },
+    "class_type": "ModelSamplingAuraFlow",
+    "_meta": {
+      "title": "ModelSamplingAuraFlow"
+    }
+  },
+  "433:111": {
+    "inputs": {
+      "prompt": [
+        "435",
+        0
+      ],
+      "clip": [
+        "433:38",
+        0
+      ],
+      "vae": [
+        "433:39",
+        0
+      ],
+      "image1": [
+        "433:117",
+        0
+      ]
+    },
+    "class_type": "TextEncodeQwenImageEditPlus",
+    "_meta": {
+      "title": "TextEncodeQwenImageEditPlus"
+    }
+  },
+  "433:88": {
+    "inputs": {
+      "pixels": [
+        "433:117",
+        0
+      ],
+      "vae": [
+        "433:39",
+        0
+      ]
+    },
+    "class_type": "VAEEncode",
+    "_meta": {
+      "title": "VAE Encode"
+    }
+  },
+  "433:8": {
+    "inputs": {
+      "samples": [
+        "433:3",
+        0
+      ],
+      "vae": [
+        "433:39",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "433:89": {
+    "inputs": {
+      "lora_name": "Qwen-Image-Edit-2511-Lightning-4steps-V1.0-fp32.safetensors",
+      "strength_model": 1,
+      "model": [
+        "433:37",
+        0
+      ]
+    },
+    "class_type": "LoraLoaderModelOnly",
+    "_meta": {
+      "title": "Load LoRA"
+    }
+  },
+  "433:117": {
+    "inputs": {
+      "image": [
+        "78",
+        0
+      ]
+    },
+    "class_type": "FluxKontextImageScale",
+    "_meta": {
+      "title": "FluxKontextImageScale"
+    }
+  },
+  "433:3": {
+    "inputs": {
+      "seed": 65511588194177,
+      "steps": [
+        "433:441",
+        0
+      ],
+      "cfg": [
+        "433:442",
+        0
+      ],
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 1,
+      "model": [
+        "433:75",
+        0
+      ],
+      "positive": [
+        "433:111",
+        0
+      ],
+      "negative": [
+        "433:110",
+        0
+      ],
+      "latent_image": [
+        "433:88",
+        0
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "KSampler"
+    }
+  },
+  "433:436": {
+    "inputs": {
+      "value": 4
+    },
+    "class_type": "PrimitiveInt",
+    "_meta": {
+      "title": "Stpes"
+    }
+  },
+  "433:437": {
+    "inputs": {
+      "value": 1
+    },
+    "class_type": "PrimitiveFloat",
+    "_meta": {
+      "title": "CFG"
+    }
+  },
+  "433:438": {
+    "inputs": {
+      "value": 4
+    },
+    "class_type": "PrimitiveInt",
+    "_meta": {
+      "title": "Steps"
+    }
+  },
+  "433:440": {
+    "inputs": {
+      "switch": [
+        "433:443",
+        0
+      ],
+      "on_false": [
+        "433:37",
+        0
+      ],
+      "on_true": [
+        "433:89",
+        0
+      ]
+    },
+    "class_type": "ComfySwitchNode",
+    "_meta": {
+      "title": "Switch (Model)"
+    }
+  },
+  "433:441": {
+    "inputs": {
+      "switch": [
+        "433:443",
+        0
+      ],
+      "on_false": [
+        "433:438",
+        0
+      ],
+      "on_true": [
+        "433:436",
+        0
+      ]
+    },
+    "class_type": "ComfySwitchNode",
+    "_meta": {
+      "title": "Switch (Steps)"
+    }
+  },
+  "433:442": {
+    "inputs": {
+      "switch": [
+        "433:443",
+        0
+      ],
+      "on_false": [
+        "433:439",
+        0
+      ],
+      "on_true": [
+        "433:437",
+        0
+      ]
+    },
+    "class_type": "ComfySwitchNode",
+    "_meta": {
+      "title": "Switch (CFG)"
+    }
+  },
+  "433:443": {
+    "inputs": {
+      "value": true
+    },
+    "class_type": "PrimitiveBoolean",
+    "_meta": {
+      "title": "Enable Lightning LoRA"
+    }
+  },
+  "433:439": {
+    "inputs": {
+      "value": 1
+    },
+    "class_type": "PrimitiveFloat",
+    "_meta": {
+      "title": "CFG"
+    }
+  },
+  "734:713": {
+    "inputs": {
+      "strength": 1,
+      "pre_cfg": true,
+      "model": [
+        "734:718",
+        0
+      ]
+    },
+    "class_type": "CFGNorm",
+    "_meta": {
+      "title": "CFGNorm"
+    }
+  },
+  "734:714": {
+    "inputs": {
+      "vae_name": "qwen_image_vae.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "Load VAE"
+    }
+  },
+  "734:715": {
+    "inputs": {
+      "clip_name": "qwen_2.5_vl_7b_fp8_scaled.safetensors",
+      "type": "qwen_image",
+      "device": "default"
+    },
+    "class_type": "CLIPLoader",
+    "_meta": {
+      "title": "Load CLIP"
+    }
+  },
+  "734:716": {
+    "inputs": {
+      "unet_name": "Qwen-Image-Edit-2511-FP8_e4m3fn.safetensors",
+      "weight_dtype": "default"
+    },
+    "class_type": "UNETLoader",
+    "_meta": {
+      "title": "Load Diffusion Model"
+    }
+  },
+  "734:717": {
+    "inputs": {
+      "prompt": "",
+      "clip": [
+        "734:715",
+        0
+      ],
+      "vae": [
+        "734:714",
+        0
+      ],
+      "image1": [
+        "734:723",
+        0
+      ]
+    },
+    "class_type": "TextEncodeQwenImageEditPlus",
+    "_meta": {
+      "title": "TextEncodeQwenImageEditPlus"
+    }
+  },
+  "734:718": {
+    "inputs": {
+      "shift": 3,
+      "model": [
+        "734:728",
+        0
+      ]
+    },
+    "class_type": "ModelSamplingAuraFlow",
+    "_meta": {
+      "title": "ModelSamplingAuraFlow"
+    }
+  },
+  "734:719": {
+    "inputs": {
+      "prompt": [
+        "711",
+        0
+      ],
+      "clip": [
+        "734:715",
+        0
+      ],
+      "vae": [
+        "734:714",
+        0
+      ],
+      "image1": [
+        "734:723",
+        0
+      ]
+    },
+    "class_type": "TextEncodeQwenImageEditPlus",
+    "_meta": {
+      "title": "TextEncodeQwenImageEditPlus"
+    }
+  },
+  "734:720": {
+    "inputs": {
+      "pixels": [
+        "734:723",
+        0
+      ],
+      "vae": [
+        "734:714",
+        0
+      ]
+    },
+    "class_type": "VAEEncode",
+    "_meta": {
+      "title": "VAE Encode"
+    }
+  },
+  "734:721": {
+    "inputs": {
+      "samples": [
+        "734:724",
+        0
+      ],
+      "vae": [
+        "734:714",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "734:722": {
+    "inputs": {
+      "lora_name": "Qwen-Image-Edit-2511-Lightning-4steps-V1.0-fp32.safetensors",
+      "strength_model": 1,
+      "model": [
+        "734:716",
+        0
+      ]
+    },
+    "class_type": "LoraLoaderModelOnly",
+    "_meta": {
+      "title": "Load LoRA"
+    }
+  },
+  "734:723": {
+    "inputs": {
+      "image": [
+        "433:8",
+        0
+      ]
+    },
+    "class_type": "FluxKontextImageScale",
+    "_meta": {
+      "title": "FluxKontextImageScale"
+    }
+  },
+  "734:724": {
+    "inputs": {
+      "seed": 84829536450496,
+      "steps": [
+        "734:729",
+        0
+      ],
+      "cfg": [
+        "734:730",
+        0
+      ],
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 1,
+      "model": [
+        "734:713",
+        0
+      ],
+      "positive": [
+        "734:719",
+        0
+      ],
+      "negative": [
+        "734:717",
+        0
+      ],
+      "latent_image": [
+        "734:720",
+        0
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "KSampler"
+    }
+  },
+  "734:725": {
+    "inputs": {
+      "value": 4
+    },
+    "class_type": "PrimitiveInt",
+    "_meta": {
+      "title": "Stpes"
+    }
+  },
+  "734:726": {
+    "inputs": {
+      "value": 1
+    },
+    "class_type": "PrimitiveFloat",
+    "_meta": {
+      "title": "CFG"
+    }
+  },
+  "734:727": {
+    "inputs": {
+      "value": 4
+    },
+    "class_type": "PrimitiveInt",
+    "_meta": {
+      "title": "Steps"
+    }
+  },
+  "734:728": {
+    "inputs": {
+      "switch": [
+        "734:731",
+        0
+      ],
+      "on_false": [
+        "734:716",
+        0
+      ],
+      "on_true": [
+        "734:722",
+        0
+      ]
+    },
+    "class_type": "ComfySwitchNode",
+    "_meta": {
+      "title": "Switch (Model)"
+    }
+  },
+  "734:729": {
+    "inputs": {
+      "switch": [
+        "734:731",
+        0
+      ],
+      "on_false": [
+        "734:727",
+        0
+      ],
+      "on_true": [
+        "734:725",
+        0
+      ]
+    },
+    "class_type": "ComfySwitchNode",
+    "_meta": {
+      "title": "Switch (Steps)"
+    }
+  },
+  "734:730": {
+    "inputs": {
+      "switch": [
+        "734:731",
+        0
+      ],
+      "on_false": [
+        "734:733",
+        0
+      ],
+      "on_true": [
+        "734:726",
+        0
+      ]
+    },
+    "class_type": "ComfySwitchNode",
+    "_meta": {
+      "title": "Switch (CFG)"
+    }
+  },
+  "734:731": {
+    "inputs": {
+      "value": true
+    },
+    "class_type": "PrimitiveBoolean",
+    "_meta": {
+      "title": "Enable Lightning LoRA"
+    }
+  },
+  "734:733": {
+    "inputs": {
+      "value": 1
+    },
+    "class_type": "PrimitiveFloat",
+    "_meta": {
+      "title": "CFG"
+    }
+  }
+}
